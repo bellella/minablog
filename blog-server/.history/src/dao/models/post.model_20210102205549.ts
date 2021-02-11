@@ -1,0 +1,57 @@
+
+import { Model, DataTypes } from 'sequelize'
+import sqlCon from './index'
+
+export class Post extends Model {
+
+    constructor() {
+        super();
+        Post.init({
+            id: {
+                type: DataTypes.BIGINT,
+                autoIncrement: true,
+                primaryKey: true
+            },
+            category_id: {
+                type: DataTypes.BIGINT(11)
+            },
+            title: {
+                type: DataTypes.STRING(50),
+                allowNull: true
+            },
+            show: {
+                type: DataTypes.INTEGER(1),
+                get() {
+                    return this.getDataValue('show') == 1
+                },
+                set(value) {
+                    this.setDataValue('show', value ? 1 : 0);
+                }
+            },
+            content: {
+                type: DataTypes.TEXT,
+                allowNull: true,
+            },
+            thumbnail: {
+                type: DataTypes.TEXT,
+                allowNull: true
+            },
+            view: {
+                type: DataTypes.BIGINT(20),
+                defaultValue: 0
+            }
+        },
+            {
+                sequelize: sqlCon,
+                modelName: 'post'
+            });
+
+    }
+}
+export interface BlogSettingAttribute {
+    id?: number
+    title: number
+    profile?: string
+    meta?: any
+    use: number | boolean
+}

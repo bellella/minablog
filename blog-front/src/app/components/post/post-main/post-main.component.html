@@ -1,0 +1,11 @@
+<div *ngIf="post" class="post-main-wrapper">
+    <a (click)="router.navigate(['post','view',post.id])">
+        <div class="post-main post" style="background: url({{post.thumbnail}});">
+            <div class="post-body p-3">
+                <h1 class="post-title">{{post.title}}</h1>
+                <p class="lead my-3">{{setContent(post.content)}}</p>
+                <app-post-meta [createdAt]="post.createdAt" [viewCount]="post.view" [replyCount]="post.replyCount"></app-post-meta>
+            </div>
+        </div>
+    </a>
+</div>

@@ -1,0 +1,77 @@
+<div *ngIf="isAdmin" class="mb-4">
+	<app-post-edit (saveEvent)="getData()" #edit></app-post-edit>
+	<button *ngIf="isLogin" class="btn btn-sm btn-outline-dark mr-2" (click)="edit.open()">New Post!</button>
+	<button *ngIf="!isLogin" class="btn btn-sm btn-outline-dark mr-2" (click)="login()">LOGIN</button>
+	<button *ngIf="isLogin" class="btn btn-sm btn-outline-dark" (click)="logout()">LOGOUT</button>
+</div>
+<!-- Search Widget -->
+<div class="side-widget-item">
+	<h5 class="widget-title blog-title">SEARCH POSTS</h5>
+	<div class="widget-body">
+		<div class="input-group mn-search-wrapper">
+			<input type="text" class="form-control" placeholder="Search.." #searchInput
+			(keyup.enter)="router.navigate(['post','list','search', searchInput.value])">
+			<div class="input-group-append">
+			  <button class="btn btn-outline-dark" type="button" 
+			  (click)="router.navigate(['post','list','search', searchInput.value])">
+				<i class="fa fa-search"></i>
+			  </button>
+			</div>
+		  </div>
+	</div>
+</div>
+
+<!-- Categories Widget -->
+<div class="side-widget-item">
+	<h5 class="widget-title blog-title">TAG CLOUD</h5>
+	<div class="widget-body">
+		<div class="tagcloud-wrapper">
+			<a *ngFor="let tag of tagList" class="tagcloud-item" 
+			(click)="router.navigate(['post','list','tag',tag.name])">{{tag.name}}</a>
+		</div>
+	</div>
+</div>
+
+<!-- Categories Widget -->
+<div class="side-widget-item">
+	<h5 class="widget-title blog-title">CATEGORIES</h5>
+	<div class="widget-body">
+		<ul class="mn-sidecat-wrapper">
+			<li>
+				<a
+				(click)="router.navigate(['post','cat','list',0])">All
+					<span>({{categoryAllCount}})</span></a>
+			</li>
+			<li *ngFor="let cat of categoryList"><a
+				(click)="router.navigate(['post','cat','list',cat.id])">{{cat.name}}
+					<span>({{cat.postCount}})</span></a></li>
+		</ul>
+	</div>
+</div>
+
+<!-- Side Widget -->
+<div class="side-widget-item">
+	<h5 class="widget-title blog-title">POPULAR POSTS</h5>
+	<div class="widget-body post-side-wrapper">
+		<div *ngFor="let post of topNList" class="post-side post"> 
+			<a class="post-thumb" (click)="router.navigate(['post','view',post.id])"
+				style="background-image: url({{post.thumbnail}});">
+			</a>
+			<div class="post-body"> 
+					<a class="post-title" (click)="router.navigate(['post','view',post.id])">{{post.title}}</a>
+						  <app-post-meta [viewCount]="post.view" [replyCount]="post.replyCount"></app-post-meta>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="side-widget-item">
+	<h5 class="widget-title blog-title">ABOUT ME</h5>
+	<div class="widget-body">
+		<a class="profile-image" routerLink="/post/profile"> <img [src]="(profile$ | async).image"> </a>
+		<p class="mn-profile-text mt-3">{{(profile$ | async).text}}</p>
+	</div>
+</div>
+

@@ -1,0 +1,67 @@
+// content {
+//   position: relative;
+//   display: flex;
+//   z-index: 1;
+//   flex: 1 0 auto;
+//   min-height: 1200px;
+//   > *:not(router-outlet) {
+//     display: flex;
+//     flex: 1 0 auto;
+//     width: 100%;
+//     min-width: 100%;
+//   }
+//   .content-wrapper {
+//     min-height: 100vh;
+//     width: 100%;
+//   }
+// }
+// .loading-wrapper {
+//   min-width: 100%;
+//   & > div {
+//     position: fixed;
+//     top: 45%;
+//     left: 48%;
+//     width:50px;
+//     height:50px;
+//   }
+//   .loading-badge {
+//     font-size:50px;
+
+//   }
+// }
+
+// @-webkit-keyframes rotating /* Safari and Chrome */ {
+//   from {
+//     -webkit-transform: rotate(0deg);
+//     -o-transform: rotate(0deg);
+//     transform: rotate(0deg);
+//   }
+//   to {
+//     -webkit-transform: rotate(360deg);
+//     -o-transform: rotate(360deg);
+//     transform: rotate(360deg);
+//   }
+// }
+// @keyframes rotating {
+//   from {
+//     -ms-transform: rotate(0deg);
+//     -moz-transform: rotate(0deg);
+//     -webkit-transform: rotate(0deg);
+//     -o-transform: rotate(0deg);
+//     transform: rotate(0deg);
+//   }
+//   to {
+//     -ms-transform: rotate(360deg);
+//     -moz-transform: rotate(360deg);
+//     -webkit-transform: rotate(360deg);
+//     -o-transform: rotate(360deg);
+//     transform: rotate(360deg);
+//   }
+// }
+// .rotating {
+//   -webkit-animation: rotating 2s linear infinite;
+//   -moz-animation: rotating 2s linear infinite;
+//   -ms-animation: rotating 2s linear infinite;
+//   -o-animation: rotating 2s linear infinite;
+//   animation: rotating 2s linear infinite;
+// }

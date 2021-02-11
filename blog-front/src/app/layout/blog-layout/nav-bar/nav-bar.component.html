@@ -1,0 +1,14 @@
+<div class="container">
+	<header class="blog-header">
+		<h1>
+		  <a class="blog-header-logo text-dark" href="#">{{headerTitle$ | async}}</a>
+		</h1>
+	</header>
+  
+	  <nav class="blog-nav d-flex justify-content-center">
+		<a class="p-2 mr-3 " routerLink="/post/home">HOME</a>
+		<a class="p-2 mr-3" *ngFor="let cat of categoryList$ | async"
+		(click)="router.navigate(['post','cat','list',cat.id])">{{cat.name}}</a>
+		<a class="p-2 link-secondary" routerLink="/post/profile">ABOUT ME</a>
+	  </nav>
+  </div>

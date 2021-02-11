@@ -1,0 +1,7 @@
+<div class="post-meta-wrapper">
+    <span *ngIf="createdAt" class="meta-item mr-2"><i class="icon-calendar mr-2"></i><span>{{createdAt | date}}</span></span>
+    <span *ngIf="viewCount" class="meta-item mr-2"> <i
+        class="icon icon-check mr-2"></i><span>{{viewCount}}</span></span>
+    <span *ngIf="replyCount" class="meta-item"> <i
+        class="icon-comment2 mr-2"></i><span>{{replyCount}}</span></span>
+  </div>

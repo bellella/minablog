@@ -1,0 +1,34 @@
+<div *ngIf="dataList" class="m-table">
+<p>Total {{dataList.length}} posts</p>
+<table class="table custom-table">
+    <thead>
+      <tr *ngIf="titles.length > 0">
+      <th *ngFor="let title of titles">{{title}}</th>
+    </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of dataList; let i = index;" (click)="rowSelect.emit(data)" [class.selected]="data.id && data.id == selectedId">
+          <ng-container *ngIf="i >= page.startRow && i <= page.endRow">
+        <td *ngFor="let row of rows" [style.width.px]="row.width ? row.width : null">
+      <ng-template [ngIf]="row.column" [ngIfElse]="elseBlock" [ngTemplateOutlet]="row.column" [ngTemplateOutletContext]="{row : data}">
+      </ng-template>  
+      <ng-template #elseBlock>
+        <ng-container [ngSwitch]="row.type">
+          <ng-template ngSwitchCase="image">
+            <img [src]="getVal(data,row.val)"/>
+          </ng-template>
+          <ng-template ngSwitchCase="date">
+            {{getVal(data,row.val) | date}}
+          </ng-template>
+          <ng-template ngSwitchDefault>{{getVal(data,row.val)}}</ng-template>
+
+        </ng-container>
+      </ng-template>
+      </td> 
+      </ng-container>
+    </tr>
+    </tbody>
+  </table>
+
+  <app-pagenation #page [currPage]="1" [totalCount]="dataList.length" [blockCount]="pageCount"></app-pagenation>
+</div>

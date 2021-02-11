@@ -1,0 +1,3 @@
+interface SqlModel {
+    initModel()
+}

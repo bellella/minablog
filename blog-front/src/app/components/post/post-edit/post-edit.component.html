@@ -1,0 +1,84 @@
+<ng-template #Modal let-modal>
+    <div class="modal-header">
+      <h5 class="modal-title text-center">Save a post..</h5>
+      <button type="button" class="close" aria-label="Close" (click)="close()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-body" body>
+<div class="row">
+  <div class="col-md-7 col-sm-12">
+    <div class="form-group">
+        <div class="row">
+          <div class="col-6 pr-1">
+                          <label>Category</label>
+                          <div class="d-block">
+                            <ng-select [(ngModel)]="post.categoryId" [items]="categoryList$ | async" bindLabel="name"
+                              bindValue="id" [searchable]="false" [clearable]="false"
+                              placeholder="Category"></ng-select>
+                          </div>
+          </div>
+          <div class="col-6 pl-1">
+              <label>Show</label>
+              <div class="d-block">
+                <ng-select [(ngModel)]="post.show" [items]="[{label: 'ON', value: true},{label: 'OFF', value: false}]" 
+                bindLabel="label" bindValue="value" [searchable]="false" [clearable]="false"
+                placeholder="Show"></ng-select>
+              </div>
+          </div>
+        </div>
+      </div>
+        <div class="form-group">
+          <label for="company">Title</label>
+          <input type="text" class="form-control" [(ngModel)]="post.title"
+            placeholder="Enter the post's title.">
+        </div>
+        <div style="min-height: 50vh; margin-bottom: 50px;">
+          <div style="height: 42vh;">
+          <app-editor [(content)]="post.content" (imageEvent)="addThumbnail($event)"></app-editor>
+          </div>
+          </div>
+</div>
+
+          <div class="col-md-5 col-sm-12">
+
+            <div class="form-group">
+              <label>Thumbnail</label>
+              <div class="thumb-list">
+                <p *ngIf="thumbnailList.length === 0" class="text-info mb-0 ml-2">No thumbnail yet</p>
+                <a *ngFor="let i of thumbnailList" (click)="selectThumb(i)" class="thumb-item" [class.outlined]="i == post.thumbnail"> 
+                <img [src]="i" class="mr-2">
+              </a>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Tags</label>
+              <ng-select
+                class="disable-arrow disable-dropdown"
+                [items]="post.tags"
+                placeholder="No tag yet"
+                [multiple]="true"
+                [addTag]="true"
+                [(ngModel)]="post.tags"
+                [clearable]="false"
+                >
+            </ng-select>
+            </div>
+
+          </div>
+</div><!--end row-->
+
+
+          </div>
+          </div>
+
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark px-3" (click)="close()">CLOSE</button>
+      <button type="button" class="btn btn-dark px-4" (click)="save()" >SAVE</button>
+    </div>
+    <div class="right-side-wrapper">
+
+    </div>
+  </ng-template>

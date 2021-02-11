@@ -1,0 +1,35 @@
+<div class="post-view">
+  <div *ngIf="post.thumbnail" class="post-view-thumb">
+    <img [src]="post.thumbnail" />
+  </div>
+
+  <h1 class="post-view-title">{{post.title}}</h1>
+
+  <div class="bottom-item-wrapper">
+    <span class="bottom-item mr-2"><i class="icon-calendar mr-2"></i><span>{{post.createdAt | date}}</span></span>
+    <span class="bottom-item mr-2"> <i class="icon icon-eye mr-2"></i><span>{{post.view}}</span></span>
+  </div>
+
+
+  <div class="post-view-content" [innerHTML]="post.content"></div>
+
+  <div class="tagcloud-wrapper my-5">
+    <a *ngFor="let tag of post.tags" class="tagcloud-item"
+      (click)="router.navigate(['post','list','tag',tag.name])">{{tag.name}}</a>
+  </div>
+  <div style="text-align: right;">
+    <button *ngIf="isAdmin" class="btn btn-sm btn-outline-dark" (click)="edit.editOpen(post)">Edit Post!</button>
+  </div>
+  <app-post-reply [postId]="id"></app-post-reply>
+
+  <div class="post-more">
+    <h3 class="post-group-title blog-title">Recommended posts
+    </h3>
+    <div class="row">
+      <div *ngFor="let post of recommendList" class="col-md-4 col-sm-12">
+        <app-post-middle [post]="post" [catShow]="false" [textShow]="false"></app-post-middle>
+      </div>
+    </div>
+    <app-post-edit #edit></app-post-edit>
+  </div>
+</div>

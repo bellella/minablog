@@ -1,0 +1,5 @@
+<div class="col-12 file-container">
+<input #fileRef type="file" (change)="processFile(fileRef.files[0])"/>
+<label *ngIf="!imageThumbnail" for="fileReg">Upload file</label>
+<img *ngIf="imageThumbnail" class="thumbnail" [src]="imageThumbnail" error=""/>
+</div>

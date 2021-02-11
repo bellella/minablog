@@ -1,0 +1,15 @@
+.custom-table {
+    tbody > tr {
+        cursor: pointer;
+        &:hover {
+            background: #20a8d859;
+        }
+        &.selected {
+            background: #20a8d859;
+        }
+    }
+    img {
+        max-width: 50px;
+        max-height: 50px;
+    }
+}

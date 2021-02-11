@@ -1,0 +1,14 @@
+<div *ngIf="post" class="post-md post animate-opacity">
+  <div *ngIf="post.thumbnail" class="post-thumb">
+    <a class="thumb-img" style="background-image: url({{post.thumbnail}})"
+      (click)="router.navigate(['post','view',post.id])"></a>
+  </div>
+  <div class="post-body" [class.no-thumb]="!post.thumbnail">
+    <p *ngIf="catShow" class="post-cat">{{post.category.name}}</p>
+    <h3 class="post-title">
+      <a (click)="router.navigate(['post','view',post.id])">{{post.title}}</a>
+    </h3>
+    <p *ngIf="textShow" class="post-text">{{setContent(post.content)}}</p>
+    <app-post-meta [createdAt]="post.createdAt" [viewCount]="post.view" [replyCount]="post.replyCount"></app-post-meta>
+  </div>
+</div>

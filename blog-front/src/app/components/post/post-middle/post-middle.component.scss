@@ -1,0 +1,41 @@
+.post-md {
+    .post-thumb {
+        padding-bottom: 75%!important;
+        position: relative;
+        border-radius: 8px;
+        overflow: hidden;
+        .thumb-img {
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: 0;
+            bottom: 0;
+            background-size: cover;
+            background-position: 50% 50%;
+        }
+    }
+    .post-body {
+        &:not(.no-thumb) {
+            padding: 15px 10px 0 10px;
+            height: 150px;
+            position: relative;
+            .post-title {
+                font-size: 19px;
+            }
+        }
+        &.no-thumb {
+            margin-bottom: 30px;
+            .post-title {
+                font-size: 30px;
+            }
+        }
+    }
+
+    .post-text {
+        font-weight: 300;
+        font-size: 14px;
+        opacity: 0.9;
+        margin-bottom: 15px;
+    }
+}
+

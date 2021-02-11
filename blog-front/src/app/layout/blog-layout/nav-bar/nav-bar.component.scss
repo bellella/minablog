@@ -1,0 +1,24 @@
+.blog-header {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin: 25px 0;
+    h1 {
+        margin: 0 auto;
+    }
+    a {
+        font-weight: 500;
+        font-size: 60px;
+        &:hover {
+            text-decoration: none;
+        }
+    }
+}
+.blog-nav {
+    font-size: 13px;
+    font-weight: 400;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    // border-bottom: 1px dashed #b7b7b7;
+    // border-top: 1px dashed #b7b7b7;
+}

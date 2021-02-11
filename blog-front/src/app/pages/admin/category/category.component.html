@@ -1,0 +1,66 @@
+<div class="animated fadeIn">
+  <div class="card">
+    <div class="card-header">
+      Post Categories
+      <div class="card-header-actions">
+        <a href="https://valor-software.com/ngx-bootstrap/#/carousel" target="_blank">
+          <small className="text-muted">docs</small>
+        </a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-4">
+    
+          <div class="card-body">
+            <div class="mt-1 mb-2 d-flex justify-content-between">
+            <button type="button" class="btn btn-outline-primary" (click)="addCategory()"><i class="fa fa-plus"></i>&nbsp;Add Category</button>
+            <button type="button" class="btn btn-outline-danger" (click)="deleteCategory()"><i class="fa fa-minus"></i>&nbsp;Delete Category</button>
+          </div>
+            <div cdkDropList class="example-list mx-auto" (cdkDropListDropped)="drop($event)">
+                <div class="example-box" cdkDrag *ngFor="let cat of categoryList; let i = index;"
+                [class.selected]="selectedIndex === i" (click)="selectCategory(cat,i)">{{cat.name}}
+                <div>
+                  <span *ngIf="cat.show" class="badge badge-primary mr-2">ACTIVE</span>
+                  <span *ngIf="cat.sideShow" class="badge badge-success">SIDEBAR</span>
+                </div>
+              </div>
+              </div>
+          </div>
+      </div>
+      <div class="col-sm-8">
+
+        <div class="card-body" [class.disabled]="selectedIndex === -1">
+          <div class="form-group">
+            <label for="company">Category Title</label>
+            <input type="text" class="form-control" [(ngModel)]="thisCateogry.name" placeholder="Enter your company name">
+          </div>
+          <div class="form-group">
+            <div class="row">
+              <div class="col-6">
+                <label for="vat">Active</label>
+                <label class="switch switch-label switch-info d-block">
+                  <input type="checkbox" class="switch-input" [(ngModel)]="thisCateogry.show">
+                  <span class="switch-slider" data-checked="On" data-unchecked="Off"></span>
+                </label>
+              </div>
+              <div class="col-6">
+                <label for="vat">Sidebar Active</label>
+                <label class="switch switch-label switch-info d-block">
+                  <input type="checkbox" class="switch-input" [(ngModel)]="thisCateogry.sideShow">
+                  <span class="switch-slider" data-checked="On" data-unchecked="Off"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        </div>
+    </div>
+
+    <div class="card-footer">
+      <button type="SAVE" class="btn btn-sm btn-primary mr-2" (click)="editCategoryList()">Submit</button>
+      <button type="RESET" class="btn btn-sm btn-danger" (click)="getCategoryList()">Reset</button>
+    </div>
+  </div>
+  </div>
+  

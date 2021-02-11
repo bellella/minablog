@@ -1,0 +1,12 @@
+<div *ngIf="totalPage > 1" class="row">
+  <div class="m-pagenation">
+    <ul class="m-pagenation-ul">
+      <li *ngIf="currPage > blockPage" class="m-pagenation-li" (click)="previous()">
+        <a class="page-link" href="javascript:void(0)">&lt;</a></li>
+      <li *ngFor="let page of pageArr" class="m-pagenation-li" (click)="clickPage(page)"
+        [class.active]="currPage == page"><a class="page-link" href="javascript:void(0)">{{page}}</a></li>
+      <li *ngIf="endPage != totalPage" class="m-pagenation-li" (click)="next()">
+        <a class="page-link" href="javascript:void(0)">&gt;</a></li>
+    </ul>
+  </div>
+</div>

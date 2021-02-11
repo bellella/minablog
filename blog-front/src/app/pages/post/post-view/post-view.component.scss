@@ -1,0 +1,35 @@
+.post-view {
+    .post-view-thumb {
+        max-height: 400px;
+        height: 400px;
+        img {
+            height: 100%;
+            width: 100%;
+            margin: 0 auto;
+            display: block;
+        }
+    }
+    .post-view-title {
+        font-size: 30px;
+        letter-spacing: .5px;
+        height: 50px;
+        opacity: 0.9;
+        align-items: center;
+        display: flex;
+        margin: 20px 0 10px 0;
+    }
+    .post-view-content {
+        margin-top: 30px;
+        font-size: 15px;
+        letter-spacing: .5px;
+    }
+    .bottom-item {
+        opacity: .7;
+        font-size: 13.5px;
+    }
+    .post-more {
+        .blog-title {
+            font-size: 20px;
+        }
+    }
+}

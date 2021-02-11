@@ -1,0 +1,15 @@
+<div class="row">
+<ng-container *ngFor="let post of postList; let i = index;">
+    <ng-container *ngIf="i >= page.startRow && i <= page.endRow">
+        <div class="col-md-4 col-sm-12 post-md-wrapper">
+        <app-post-middle [catShow]="false" [post]="post"></app-post-middle>
+    </div>
+    </ng-container>
+    </ng-container>
+</div>
+<app-pagenation #page [currPage]="1" [totalCount]="postList.length" [blockCount]="6"></app-pagenation>
+<div *ngIf="isEmpty">
+    <div class="notyet-wrapper pr-5">
+        <p>Not yet..😅</p>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+<ng-container *ngFor="let set of homeSettingList; let i = index;">
+  <h1 *ngIf="set.uiType !== 'main'" class="post-group-title blog-title">{{set.title}}</h1>
+  <ng-container [ngSwitch]="set.uiType">
+    <app-post-main *ngSwitchCase="'main'" [post]="set.postList[0]"></app-post-main>
+  <div *ngSwitchCase="'twosome'" class="row">
+    <div *ngFor="let post of set.postList" class="col-6">
+      <app-post-middle [post]="post"></app-post-middle>
+    </div>
+  </div>
+  <div *ngSwitchCase="'triple'" class="row">
+    <div *ngFor="let post of set.postList" class="col-md-4 col-sm-12">
+      <app-post-middle [post]="post"></app-post-middle>
+    </div>
+  </div>
+  <div *ngSwitchCase="'horizontal'">
+    <app-post-left *ngFor="let post of set.postList" [post]="post"></app-post-left>
+  </div>
+  </ng-container>
+</ng-container>

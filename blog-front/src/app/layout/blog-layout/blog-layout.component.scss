@@ -1,0 +1,29 @@
+:root {
+    --blog-btn-text-color: #000000;
+  }
+.blog-btn {
+    background: var(--blog-btn-color) !important;
+    color: var(--blog-btn-text-color) !important;
+}
+.blog-loading {
+    background-image: var(--blog-loading-image);
+}
+.blog-background {
+    background: var(--blog-background-color);
+}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
+
+.m-pagenation-li a{
+    font-size: 12px !important;
+    width: 25px !important;
+    height: 25px !important;
+}
+
+@import '/src/assets/css/blog.scss';
+
+
+
+
+

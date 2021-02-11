@@ -1,0 +1,17 @@
+<app-table [dataList]="postList" [pageCount]="10">
+  <app-table-row title="id" val="id">
+  </app-table-row>
+  <app-table-row title="category" [val]="['category','name']" [width]="150">
+  </app-table-row>
+  <app-table-row title="thumbnail" type="image" val="thumbnail">
+  </app-table-row>
+  <app-table-row title="title" val="title">
+  </app-table-row>
+  <app-table-row title="date" type="date" val="createdAt">
+  </app-table-row>
+  <app-table-row title="use">
+    <ng-template let-row="row" #column>
+      <span class="badge badge-primary" [class.badge-secondary]="!row.show">{{row.show ? 'Active' : 'Inactive'}}</span>
+    </ng-template>
+  </app-table-row>
+</app-table>
