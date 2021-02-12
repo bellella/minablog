@@ -1,6 +1,7 @@
 node_modules/
 build/
 uploads/
+src/logs/*
 # IDE - VSCode
 .history/*
 .vscode/*

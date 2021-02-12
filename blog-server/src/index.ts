@@ -5,7 +5,7 @@ import controller from './controller'
 
 import * as dotenv from 'dotenv'
 import SqlConnection from './sql/sqlConnection'
-import { stream } from './configs/winston'
+import { logger, stream } from './configs/winston'
 import * as morgan from 'morgan'
 class App {
   public application : express.Application;
@@ -29,6 +29,24 @@ class App {
     app.use(morgan('combined', { stream }));
     app.use('/s/images', express.static(__dirname+'/uploads'));
     app.use('/api',controller);
+    app.use((err, req, res, next) => {
+      const errObj = {
+        req: {
+          headers: req.headers,
+          query: req.query,
+          body: req.body,
+          route: req.route
+        },
+        error: {
+          message: err.message,
+          stack: err.stack,
+          status: err.status
+        }
+      }
+
+      logger.error(`${new Date().toISOString}`, errObj);
+      next(err);
+    });
     SqlConnection.initSql();
   }
 }
