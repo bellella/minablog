@@ -47,6 +47,6 @@ router.post('/image', upload.single('file'), (req: any, res: Response, next) => 
     next(e);
   };
 
-
+});
 
 export default router;
