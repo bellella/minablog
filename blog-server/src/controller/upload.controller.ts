@@ -38,7 +38,7 @@ let router = Router();
  */
 router.post('/image', upload.single('file'), (req: any, res: Response, next) => {
     //var imageUrl = req.protocol + '://' + req.get('host') + '/s/images/' +  req.file.filename;
-    var imageUrl = '/s/images/' +  req.file.filename;
+    var imageUrl = '/s/imagess/' +  req.file.filename;
     res.status(200).send({imageUrl});
 });
 
