@@ -16,6 +16,7 @@ class App {
   constructor(){
     this.setting(this.app);
     this.app.listen(this.PORT,()=>console.log(`The server has just started. port: ${this.PORT}`));
+    logger.info(`${new Date().toISOString}`, this.PORT,'port....');
   }
 
   public setting(app) {
