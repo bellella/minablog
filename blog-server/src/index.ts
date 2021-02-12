@@ -16,7 +16,7 @@ class App {
   constructor(){
     this.setting(this.app);
     this.app.listen(this.PORT,()=>console.log(`The server has just started. port: ${this.PORT}`));
-    logger.info(`${new Date().toISOString}`, this.PORT,'port....');
+    logger.info(`${this.PORT} port is now started`);
   }
 
   public setting(app) {
@@ -45,7 +45,7 @@ class App {
         }
       }
 
-      logger.error(`${new Date().toISOString}`, errObj);
+      logger.error(`error is ocuured..`, errObj);
       next(err);
     });
     SqlConnection.initSql();
