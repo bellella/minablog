@@ -3,10 +3,10 @@ import * as bodyParser from 'body-parser';
 import * as path from 'path';
 import controller from './controller'
 
-import * as fs from 'fs'
-import * as crossenv from 'cross-env'
 import * as dotenv from 'dotenv'
 import SqlConnection from './sql/sqlConnection'
+import { stream } from './configs/winston'
+import * as morgan from 'morgan'
 class App {
   public application : express.Application;
 
@@ -26,6 +26,7 @@ class App {
 
     app.use(bodyParser.urlencoded({ extended: true }));
     app.use(bodyParser.json());
+    app.use(morgan('combined', { stream }));
     app.use('/s/images', express.static(__dirname+'/uploads'));
     app.use('/api',controller);
     SqlConnection.initSql();
