@@ -14,7 +14,11 @@ class App {
   private PORT: any = process.env.PORT || 3000;
 
   constructor(){
-    this.setting(this.app);
+    try {
+      this.setting(this.app);
+    }catch(e) {
+      logger.info('error from setting',e);
+    }
     this.app.listen(this.PORT,()=>console.log(`The server has just started. port: ${this.PORT}`));
     logger.info(`${this.PORT} port is now started`);
   }
@@ -24,12 +28,14 @@ class App {
         for (var k in envConfig) {
             process.env[k] = envConfig[k]
         }
-
+        logger.info('1');
     app.use(bodyParser.urlencoded({ extended: true }));
     app.use(bodyParser.json());
     app.use(morgan('combined', { stream }));
+    logger.info('2');
     app.use('/s/images', express.static(__dirname+'/uploads'));
     app.use('/api',controller);
+    logger.info('3');
     app.use((err, req, res, next) => {
       const errObj = {
         req: {
@@ -48,7 +54,9 @@ class App {
       logger.error(`error is ocuured..`, errObj);
       next(err);
     });
+    logger.info('4');
     SqlConnection.initSql();
+    logger.info('5');
   }
 }
 
