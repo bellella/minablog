@@ -45,6 +45,7 @@ class SqlConnection {
         modelList.forEach((m: SqlModelCreator) => {
             m.associate();
         });
+        console.log('sql setting id done beautifuly')
     }
 
 }

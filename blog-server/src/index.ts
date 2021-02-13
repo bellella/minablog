@@ -18,6 +18,7 @@ class App {
       this.setting(this.app);
     }catch(e) {
       logger.info('error from setting',e);
+      console.log('error is ocurrend while setting')
     }
     this.app.listen(this.PORT,()=>console.log(`The server has just started. port: ${this.PORT}`));
     logger.info(`${this.PORT} port is now started`);
@@ -36,24 +37,24 @@ class App {
     app.use('/s/images', express.static(__dirname+'/uploads'));
     app.use('/api',controller);
     logger.info('3');
-    app.use((err, req, res, next) => {
-      const errObj = {
-        req: {
-          headers: req.headers,
-          query: req.query,
-          body: req.body,
-          route: req.route
-        },
-        error: {
-          message: err.message,
-          stack: err.stack,
-          status: err.status
-        }
-      }
+    // app.use((err, req, res, next) => {
+    //   const errObj = {
+    //     req: {
+    //       headers: req.headers,
+    //       query: req.query,
+    //       body: req.body,
+    //       route: req.route
+    //     },
+    //     error: {
+    //       message: err.message,
+    //       stack: err.stack,
+    //       status: err.status
+    //     }
+    //   }
 
-      logger.error(`error is ocuured..`, errObj);
-      next(err);
-    });
+    //   logger.error(`error is ocuured..`, errObj);
+    //   next(err);
+    // });
     logger.info('4');
     SqlConnection.initSql();
     logger.info('5');
